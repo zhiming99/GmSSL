@@ -548,8 +548,7 @@ if (CMAKE_C_COMPILER_ID MATCHES "MSVC")
 	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON) # set before add_library
 endif()
 
-add_library(gmssl ${src})
-
+add_library(gmssl STATIC ${src})
 
 
 
@@ -575,6 +574,7 @@ else()
 endif()
 
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
 SET_TARGET_PROPERTIES(gmssl PROPERTIES VERSION 3.1 SOVERSION 3)
